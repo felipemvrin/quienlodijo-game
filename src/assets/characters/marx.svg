@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Karl Marx">
+  <circle cx="64" cy="64" r="60" fill="#c8352b" />
+  <circle cx="64" cy="64" r="44" fill="none" stroke="#ffe9e6" stroke-width="3" />
+  <path d="M64 30v68M64 64l26-22M64 64l26 22" stroke="#ffe9e6" stroke-width="8" stroke-linecap="round" fill="none" />
+</svg>

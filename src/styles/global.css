@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/* Mapea los design tokens a utilidades de Tailwind (bg-surface, text-accent, rounded-lg, …) */
+@theme inline {
+  --color-bg: var(--ql-color-bg);
+  --color-bg-deep: var(--ql-color-bg-deep);
+  --color-surface: var(--ql-color-surface);
+  --color-surface-raised: var(--ql-color-surface-raised);
+  --color-border: var(--ql-color-border);
+  --color-text: var(--ql-color-text);
+  --color-text-muted: var(--ql-color-text-muted);
+  --color-accent: var(--ql-color-accent);
+  --color-accent-strong: var(--ql-color-accent-strong);
+  --color-jesus: var(--ql-color-jesus);
+  --color-marx: var(--ql-color-marx);
+  --color-correct: var(--ql-color-correct);
+  --color-incorrect: var(--ql-color-incorrect);
+
+  --font-display: var(--ql-font-display);
+  --font-body: var(--ql-font-body);
+
+  --text-display: var(--ql-text-display);
+  --text-heading: var(--ql-text-heading);
+  --text-body: var(--ql-text-body);
+  --text-caption: var(--ql-text-caption);
+  --text-score: var(--ql-text-score);
+
+  --radius-sm: var(--ql-radius-sm);
+  --radius-md: var(--ql-radius-md);
+  --radius-lg: var(--ql-radius-lg);
+  --radius-xl: var(--ql-radius-xl);
+
+  --shadow-sm: var(--ql-shadow-sm);
+  --shadow-md: var(--ql-shadow-md);
+  --shadow-lg: var(--ql-shadow-lg);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(120% 80% at 50% 0%, var(--ql-color-surface) 0%, var(--ql-color-bg) 55%),
+    var(--ql-color-bg-deep);
+  color: var(--ql-color-text);
+  font-family: var(--ql-font-body);
+  font-size: var(--ql-text-body);
+  line-height: var(--ql-leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ql-color-accent);
+  outline-offset: 3px;
+  border-radius: var(--ql-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

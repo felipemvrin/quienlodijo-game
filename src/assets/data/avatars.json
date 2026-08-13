@@ -1,0 +1,8 @@
+[
+  { "id": "avatar-corona", "name": "La Corona", "image": "👑", "color": "#ffcf3f" },
+  { "id": "avatar-mascara", "name": "La Máscara", "image": "🎭", "color": "#c8352b" },
+  { "id": "avatar-antorcha", "name": "La Antorcha", "image": "🔥", "color": "#ff9d2e" },
+  { "id": "avatar-buho", "name": "El Búho", "image": "🦉", "color": "#3ddc84" },
+  { "id": "avatar-rayo", "name": "El Rayo", "image": "⚡", "color": "#7cc6ff" },
+  { "id": "avatar-calavera", "name": "La Calavera", "image": "💀", "color": "#b3a3cc" }
+]

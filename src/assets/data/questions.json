@@ -1,0 +1,96 @@
+[
+  {
+    "id": "q-jesus-01",
+    "quote": "Bienaventurados los pobres en espíritu, porque de ellos es el reino de los cielos.",
+    "correctAnswer": "jesus",
+    "explanation": "Primera de las bienaventuranzas del Sermón del Monte, el núcleo del mensaje ético de Jesús.",
+    "source": "Evangelio de Mateo 5:3 (Reina-Valera 1960)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-jesus-02",
+    "quote": "Más fácil es pasar un camello por el ojo de una aguja, que entrar un rico en el reino de Dios.",
+    "correctAnswer": "jesus",
+    "explanation": "Dicho de Jesús sobre la riqueza. Suena anticapitalista, pero es anterior a Marx en dieciocho siglos.",
+    "source": "Evangelio de Marcos 10:25 (Reina-Valera 1960)",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-jesus-03",
+    "quote": "No sólo de pan vivirá el hombre.",
+    "correctAnswer": "jesus",
+    "explanation": "Respuesta de Jesús durante la tentación en el desierto, citando a su vez el Deuteronomio.",
+    "source": "Evangelio de Mateo 4:4 (Reina-Valera 1960)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-jesus-04",
+    "quote": "Dad, pues, a César lo que es de César, y a Dios lo que es de Dios.",
+    "correctAnswer": "jesus",
+    "explanation": "Respuesta ante la pregunta sobre el tributo al imperio romano: la frase separa poder político y religioso.",
+    "source": "Evangelio de Marcos 12:17 (Reina-Valera 1960)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-jesus-05",
+    "quote": "A cualquiera que te hiera en la mejilla derecha, vuélvele también la otra.",
+    "correctAnswer": "jesus",
+    "explanation": "Parte del Sermón del Monte, donde Jesús contrapone la ley del talión a la no violencia.",
+    "source": "Evangelio de Mateo 5:39 (Reina-Valera 1960)",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-marx-01",
+    "quote": "La religión es el opio del pueblo.",
+    "correctAnswer": "marx",
+    "explanation": "La cita completa habla de la religión como «el suspiro de la criatura oprimida»: es más compleja de lo que suele recordarse.",
+    "source": "Contribución a la crítica de la filosofía del derecho de Hegel",
+    "year": 1844,
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-marx-02",
+    "quote": "Los proletarios no tienen nada que perder en ella más que sus cadenas.",
+    "correctAnswer": "marx",
+    "explanation": "Cierre del Manifiesto Comunista, escrito junto a Friedrich Engels.",
+    "source": "Manifiesto del Partido Comunista",
+    "year": 1848,
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-marx-03",
+    "quote": "De cada cual, según sus capacidades; a cada cual, según sus necesidades.",
+    "correctAnswer": "marx",
+    "explanation": "Fórmula de la fase superior de la sociedad comunista según Marx; su eco evangélico es intencionado.",
+    "source": "Crítica del Programa de Gotha",
+    "year": 1875,
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-marx-04",
+    "quote": "Un fantasma recorre Europa: el fantasma del comunismo.",
+    "correctAnswer": "marx",
+    "explanation": "Frase inicial del Manifiesto Comunista, una de las aperturas más citadas de la historia política.",
+    "source": "Manifiesto del Partido Comunista",
+    "year": 1848,
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-marx-05",
+    "quote": "Los filósofos no han hecho más que interpretar de diversos modos el mundo, pero de lo que se trata es de transformarlo.",
+    "correctAnswer": "marx",
+    "explanation": "Undécima tesis sobre Feuerbach, publicada por Engels tras la muerte de Marx. Está grabada en su tumba.",
+    "source": "Tesis sobre Feuerbach, XI",
+    "year": 1845,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-marx-06",
+    "quote": "La historia de todas las sociedades hasta nuestros días es la historia de la lucha de clases.",
+    "correctAnswer": "marx",
+    "explanation": "Tesis central del materialismo histórico, formulada en la apertura del primer capítulo del Manifiesto.",
+    "source": "Manifiesto del Partido Comunista",
+    "year": 1848,
+    "difficulty": "medium"
+  }
+]

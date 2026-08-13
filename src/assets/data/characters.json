@@ -1,0 +1,18 @@
+[
+  {
+    "id": "jesus",
+    "name": "Jesús de Nazaret",
+    "description": "Predicador judío del siglo I. Sus palabras llegan a través de los evangelios.",
+    "avatar": "assets/characters/jesus.svg",
+    "symbol": "✝️",
+    "colorToken": "jesus"
+  },
+  {
+    "id": "marx",
+    "name": "Karl Marx",
+    "description": "Filósofo y economista alemán (1818-1883), autor de El Capital.",
+    "avatar": "assets/characters/marx.svg",
+    "symbol": "☭",
+    "colorToken": "marx"
+  }
+]
