@@ -1,5 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Karl Marx">
-  <circle cx="64" cy="64" r="60" fill="#c8352b" />
-  <circle cx="64" cy="64" r="44" fill="none" stroke="#ffe9e6" stroke-width="3" />
-  <path d="M64 30v68M64 64l26-22M64 64l26 22" stroke="#ffe9e6" stroke-width="8" stroke-linecap="round" fill="none" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="titulo">
+  <title id="titulo">Karl Marx</title>
+  <defs>
+    <radialGradient id="fondo" cx="50%" cy="38%" r="60%">
+      <stop offset="0%" stop-color="#e04a3e" />
+      <stop offset="100%" stop-color="#c8352b" />
+    </radialGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="96" fill="url(#fondo)" />
+
+  <path d="M58 172c8-32 22-48 42-48s34 16 42 48z" fill="#2b1b1a" />
+  <path d="M100 50c23 0 36 16 36 40 0 25-16 40-36 40s-36-15-36-40c0-24 13-40 36-40z" fill="#f2ddd6" />
+  <path
+    d="M100 36c30 0 44 20 42 46-2-10-6-17-11-21-13 9-49 9-62 0-5 4-9 11-11 21-2-26 12-46 42-46z"
+    fill="#f4f1ee"
+  />
+  <path d="M72 116c8 22 18 33 28 33s20-11 28-33c-16 10-40 10-56 0z" fill="#f4f1ee" />
+  <circle cx="86" cy="92" r="4" fill="#2b1b1a" />
+  <circle cx="114" cy="92" r="4" fill="#2b1b1a" />
+  <path d="M78 82c5-4 11-4 16-1M106 81c5-3 11-3 16 1" fill="none" stroke="#f4f1ee" stroke-width="7" stroke-linecap="round" />
 </svg>

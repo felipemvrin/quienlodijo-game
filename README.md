@@ -13,15 +13,17 @@ lógica.
 
 ## Estado del proyecto
 
-🚧 **Fase 1 — Base técnica.** El proyecto arranca, tiene identidad visual, design system, motor de
-juego testeado y pantalla de bienvenida. Las pantallas de partida están por construir.
+🚧 **Fase 2 — Partida jugable.** Se puede crear una partida de 2 a 6 jugadores, responder frases con
+cuenta atrás y ver el marcador final. Faltan los assets definitivos y el modo online.
 
-| Área                           | Estado              |
-| ------------------------------ | ------------------- |
-| Arquitectura y motor de juego  | ✅ Listo y testeado |
-| Design system y tokens         | ✅ Base definida    |
-| Pantalla de bienvenida         | ✅ Funcional        |
-| Creación de partida y tablero  | ⏳ Siguiente fase   |
+| Área                           | Estado                |
+| ------------------------------ | --------------------- |
+| Arquitectura y motor de juego  | ✅ Listo y testeado   |
+| Design system y tokens         | ✅ Base definida      |
+| Pantalla de bienvenida         | ✅ Funcional          |
+| Creación de partida y tablero  | ✅ Funcional          |
+| Marcador y pantalla final      | ✅ Funcional          |
+| Ilustraciones y audio finales  | ⏳ Provisionales      |
 | Multijugador online (Supabase) | 🗓️ Planificado      |
 
 ---
@@ -31,10 +33,10 @@ juego testeado y pantalla de bienvenida. Las pantallas de partida están por con
 1. Pantalla de bienvenida.
 2. Crear partida y elegir número de jugadores (2–6).
 3. Cada jugador elige avatar.
-4. Se muestra una frase.
+4. Se muestra una frase con 15 segundos para responder.
 5. ¿Jesús ✝️ o Karl Marx ☭?
 6. Se revela la respuesta con una animación y su contexto histórico.
-7. Se asignan puntos y pasa el turno.
+7. Se asignan puntos (con bonus por rapidez) y pasa el turno.
 8. Marcador final y ganador.
 
 Las frases incluyen **fuente verificable** (versículo u obra). No se inventan citas.
@@ -116,7 +118,10 @@ src/
 │   │   ├── models/            # Tipos e interfaces del dominio
 │   │   └── services/          # Puente con Angular: estado, audio, animación
 │   └── features/
-│       └── welcome/           # Pantallas
+│       ├── welcome/           # bienvenida
+│       ├── setup/             # creación de partida
+│       ├── board/             # tablero de juego
+│       └── results/           # marcador final
 │
 ├── assets/
 │   ├── audio/                 # placeholders de música y efectos
@@ -141,6 +146,12 @@ src/
   motor.
 - **Sin colores hardcodeados.** Todo pasa por los design tokens de `src/styles/tokens.css`.
 
+### Sobre el audio
+
+Los archivos de `src/assets/audio/` siguen siendo placeholders. Mientras no existan, `AudioService`
+genera los efectos con Web Audio (`synthetic-sfx.ts`), así que el juego suena sin incorporar
+material con copyright. Al añadir un archivo real, el servicio lo usa automáticamente.
+
 ---
 
 ## Testing
@@ -160,10 +171,10 @@ rota correctamente y la partida admite entre 2 y 6 jugadores.
 - [x] Base técnica: Angular, Tailwind, GSAP, Howler, Storybook, testing
 - [x] Motor de juego con tests
 - [x] Design system y pantalla de bienvenida
-- [ ] Creación de partida y selección de avatares
-- [ ] Tablero de juego con countdown y reveal animado
-- [ ] Marcador y pantalla de victoria
-- [ ] Ilustraciones, audio y animaciones Lottie definitivas
+- [x] Creación de partida y selección de avatares
+- [x] Tablero de juego con countdown y reveal animado
+- [x] Marcador y pantalla de victoria
+- [ ] Ilustraciones, música y animaciones Lottie definitivas
 - [ ] Persistencia con Supabase (PostgreSQL)
 - [ ] Modo TV: pantalla principal + móviles como mandos (Supabase Realtime)
 - [ ] Nuevos personajes más allá de Jesús y Marx

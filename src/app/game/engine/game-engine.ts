@@ -79,14 +79,14 @@ export class GameEngine {
    * @param choice personaje elegido por el jugador
    * @param elapsedMs tiempo de reacción, usado para el bonus de rapidez
    */
-  submitAnswer(choice: CharacterId, elapsedMs = 0): AnswerResult {
+  submitAnswer(choice: CharacterId | null, elapsedMs = 0): AnswerResult {
     if (this.status !== GameStatus.Playing || !this.currentQuestion) {
       throw new Error('No hay una frase activa para responder.');
     }
 
     const question = this.currentQuestion;
     const playerId = this.currentPlayerId();
-    const correct = question.correctAnswer === choice;
+    const correct = choice !== null && question.correctAnswer === choice;
     const points = this.scores.pointsFor(correct, elapsedMs);
     const totalScore = this.scores.award(playerId, points);
 
@@ -101,6 +101,11 @@ export class GameEngine {
     };
     this.status = GameStatus.Revealing;
     return this.lastResult;
+  }
+
+  /** Se agotó el tiempo: cuenta como fallo y pasa a revelación. */
+  timeout(elapsedMs = 0): AnswerResult {
+    return this.submitAnswer(null, elapsedMs);
   }
 
   /** Pasa el turno al siguiente jugador o finaliza la partida. */

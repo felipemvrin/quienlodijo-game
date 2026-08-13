@@ -33,10 +33,15 @@ export class GameStateService {
     return state?.players[state.currentPlayerIndex];
   });
   readonly round = computed(() => this.gameState()?.round ?? 0);
-  readonly ranking = computed<readonly ScoreEntry[]>(() => this.engine?.ranking() ?? []);
+  readonly ranking = computed<readonly ScoreEntry[]>(() => {
+    // Depende de `gameState` para recalcularse en cada jugada.
+    this.gameState();
+    return this.engine?.ranking() ?? [];
+  });
   readonly winners = computed<readonly Player[]>(() =>
     this.status() === GameStatus.Finished ? (this.engine?.winners() ?? []) : [],
   );
+  readonly hasActiveGame = computed(() => this.gameState() !== null);
 
   // ---- UI State ----
   private readonly catalogLoading = signal(false);
@@ -73,12 +78,17 @@ export class GameStateService {
     this.gameState.set(this.engine.start());
   }
 
-  answer(choice: CharacterId, elapsedMs = 0): AnswerResult {
+  answer(choice: CharacterId | null, elapsedMs = 0): AnswerResult {
     const engine = this.requireEngine();
     const result = engine.submitAnswer(choice, elapsedMs);
     this.answerResult.set(result);
     this.gameState.set(engine.getState());
     return result;
+  }
+
+  /** El jugador no respondió a tiempo. */
+  timeout(elapsedMs = 0): AnswerResult {
+    return this.answer(null, elapsedMs);
   }
 
   nextTurn(): void {

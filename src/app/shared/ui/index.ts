@@ -1,4 +1,5 @@
 export * from './answer-button/answer-button.component';
+export * from './answer-reveal/answer-reveal.component';
 export * from './button/button.component';
 export * from './character-avatar/character-avatar.component';
 export * from './game-header/game-header.component';

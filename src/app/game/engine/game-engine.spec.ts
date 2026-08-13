@@ -97,6 +97,18 @@ describe('GameEngine', () => {
     expect(result.totalScore).toBe(0);
   });
 
+  it('trata el tiempo agotado como fallo sin respuesta', () => {
+    const engine = createEngine();
+    engine.start();
+
+    const result = engine.timeout(15_000);
+
+    expect(result.correct).toBe(false);
+    expect(result.answer.choice).toBeNull();
+    expect(result.pointsAwarded).toBe(0);
+    expect(engine.getState().status).toBe(GameStatus.Revealing);
+  });
+
   it('devuelve la explicación de la frase al revelar', () => {
     const engine = createEngine();
     const question = engine.start().currentQuestion!;

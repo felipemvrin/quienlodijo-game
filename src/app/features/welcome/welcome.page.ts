@@ -4,9 +4,9 @@ import {
   ElementRef,
   afterNextRender,
   inject,
-  signal,
   viewChild,
 } from '@angular/core';
+import { Router } from '@angular/router';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
 import { AnimationService } from '../../game/services/animation.service';
 import { AudioService } from '../../game/services/audio.service';
@@ -38,12 +38,6 @@ import { AudioService } from '../../game/services/audio.service';
       </p>
 
       <app-button size="lg" (pressed)="onStart()">Comenzar</app-button>
-
-      @if (comingSoon()) {
-        <p class="welcome__soon" role="status">
-          La creación de partida llega en la próxima entrega. 🎬
-        </p>
-      }
     </section>
   `,
   styles: `
@@ -112,20 +106,13 @@ import { AudioService } from '../../game/services/audio.service';
       color: var(--ql-color-text-muted);
       text-wrap: pretty;
     }
-
-    .welcome__soon {
-      margin: 0;
-      font-size: var(--ql-text-caption);
-      color: var(--ql-color-text-muted);
-    }
   `,
 })
 export class WelcomePage {
   private readonly animations = inject(AnimationService);
   private readonly audio = inject(AudioService);
+  private readonly router = inject(Router);
   private readonly stage = viewChild.required<ElementRef<HTMLElement>>('stage');
-
-  protected readonly comingSoon = signal(false);
 
   constructor() {
     afterNextRender(() => this.animations.enter(this.stage().nativeElement));
@@ -133,7 +120,6 @@ export class WelcomePage {
 
   protected onStart(): void {
     this.audio.play('sfx.button');
-    this.animations.pop(this.stage().nativeElement);
-    this.comingSoon.set(true);
+    void this.router.navigate(['/partida/nueva']);
   }
 }

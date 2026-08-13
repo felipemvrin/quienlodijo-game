@@ -6,7 +6,8 @@ import type { QuestionId } from './question.model';
 export interface Answer {
   readonly questionId: QuestionId;
   readonly playerId: PlayerId;
-  readonly choice: CharacterId;
+  /** `null` cuando se agotó el tiempo sin responder. */
+  readonly choice: CharacterId | null;
   /** Milisegundos transcurridos desde que se mostró la frase. */
   readonly elapsedMs: number;
 }

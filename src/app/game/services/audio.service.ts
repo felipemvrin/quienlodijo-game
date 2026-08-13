@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { Howl, Howler } from 'howler';
+import { SyntheticSfxPlayer, type SyntheticSfx } from './synthetic-sfx';
 
 /** Claves lógicas de sonido: la UI nunca referencia rutas de archivo. */
 export type SoundKey =
@@ -33,6 +34,16 @@ const SOUND_MANIFEST: Record<SoundKey, SoundDefinition> = {
   'sfx.victory': { src: 'assets/audio/sfx/victory.mp3' },
 };
 
+/** Efecto sintético que suena mientras el archivo correspondiente no exista. */
+const SYNTHETIC_FALLBACK: Partial<Record<SoundKey, SyntheticSfx>> = {
+  'sfx.button': 'button',
+  'sfx.countdown': 'countdown',
+  'sfx.correct': 'correct',
+  'sfx.incorrect': 'incorrect',
+  'sfx.reveal': 'reveal',
+  'sfx.victory': 'victory',
+};
+
 /**
  * Abstracción sobre Howler.js.
  *
@@ -43,6 +54,7 @@ const SOUND_MANIFEST: Record<SoundKey, SoundDefinition> = {
 export class AudioService {
   private readonly sounds = new Map<SoundKey, Howl>();
   private readonly unavailable = new Set<SoundKey>();
+  private readonly synth = new SyntheticSfxPlayer();
   private currentMusic: SoundKey | null = null;
 
   private readonly mutedState = signal(false);
@@ -52,7 +64,16 @@ export class AudioService {
     if (this.mutedState()) {
       return;
     }
-    this.resolve(key)?.play();
+    const sound = this.resolve(key);
+    // El archivo puede estar aún cargando o no existir: en ese caso suena el sintético.
+    if (sound?.state() === 'loaded') {
+      sound.play();
+      return;
+    }
+    const fallback = SYNTHETIC_FALLBACK[key];
+    if (fallback) {
+      this.synth.play(fallback);
+    }
   }
 
   /** Reproduce una pista de fondo deteniendo la anterior. */

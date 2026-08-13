@@ -40,6 +40,86 @@
     "difficulty": "medium"
   },
   {
+    "id": "q-jesus-06",
+    "quote": "El que de vosotros esté sin pecado sea el primero en arrojar la piedra contra ella.",
+    "correctAnswer": "jesus",
+    "explanation": "Dicho ante la mujer acusada de adulterio; desarma al tribunal apelando a la conciencia de cada acusador.",
+    "source": "Evangelio de Juan 8:7 (Reina-Valera 1960)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-jesus-07",
+    "quote": "No he venido para traer paz, sino espada.",
+    "correctAnswer": "jesus",
+    "explanation": "Una de las frases más ásperas de los evangelios: anuncia que su mensaje dividirá incluso a las familias.",
+    "source": "Evangelio de Mateo 10:34 (Reina-Valera 1960)",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-jesus-08",
+    "quote": "Anda, vende todo lo que tienes, y dalo a los pobres.",
+    "correctAnswer": "jesus",
+    "explanation": "Condición que Jesús pone al joven rico. Es fácil confundirla con una consigna redistributiva moderna.",
+    "source": "Evangelio de Marcos 10:21 (Reina-Valera 1960)",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-jesus-09",
+    "quote": "El día de reposo fue hecho por causa del hombre, y no el hombre por causa del día de reposo.",
+    "correctAnswer": "jesus",
+    "explanation": "Jesús subordina la norma religiosa a la necesidad humana, en plena discusión con los fariseos.",
+    "source": "Evangelio de Marcos 2:27 (Reina-Valera 1960)",
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-jesus-10",
+    "quote": "Así, los primeros serán últimos, y los últimos primeros.",
+    "correctAnswer": "jesus",
+    "explanation": "Cierre de la parábola de los obreros de la viña: una inversión del orden social que resuena muy moderna.",
+    "source": "Evangelio de Mateo 20:16 (Reina-Valera 1960)",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-jesus-11",
+    "quote": "Mi reino no es de este mundo.",
+    "correctAnswer": "jesus",
+    "explanation": "Respuesta a Pilato durante el juicio. Marca la distancia entre su proyecto y el poder terrenal.",
+    "source": "Evangelio de Juan 18:36 (Reina-Valera 1960)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-jesus-12",
+    "quote": "No juzguéis, para que no seáis juzgados.",
+    "correctAnswer": "jesus",
+    "explanation": "Otro pasaje del Sermón del Monte, hoy convertido en muletilla de discusiones ajenas a su contexto.",
+    "source": "Evangelio de Mateo 7:1 (Reina-Valera 1960)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-jesus-13",
+    "quote": "Amarás a tu prójimo como a ti mismo.",
+    "correctAnswer": "jesus",
+    "explanation": "Segundo mandamiento según Jesús, que cita el Levítico para resumir toda la ley.",
+    "source": "Evangelio de Mateo 22:39 (Reina-Valera 1960)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-jesus-14",
+    "quote": "Padre, perdónalos, porque no saben lo que hacen.",
+    "correctAnswer": "jesus",
+    "explanation": "Palabras atribuidas a Jesús en la cruz, sólo recogidas por el evangelio de Lucas.",
+    "source": "Evangelio de Lucas 23:34 (Reina-Valera 1960)",
+    "difficulty": "easy"
+  },
+  {
+    "id": "q-jesus-15",
+    "quote": "No podéis servir a Dios y a las riquezas.",
+    "correctAnswer": "jesus",
+    "explanation": "Advertencia sobre el dinero como poder rival de Dios; el término empleado en el original griego es «mamón».",
+    "source": "Evangelio de Mateo 6:24 (Reina-Valera 1960)",
+    "difficulty": "medium"
+  },
+  {
     "id": "q-marx-01",
     "quote": "La religión es el opio del pueblo.",
     "correctAnswer": "marx",
@@ -92,5 +172,86 @@
     "source": "Manifiesto del Partido Comunista",
     "year": 1848,
     "difficulty": "medium"
+  },
+  {
+    "id": "q-marx-07",
+    "quote": "Todo lo sólido se desvanece en el aire, todo lo sagrado es profanado.",
+    "correctAnswer": "marx",
+    "explanation": "Descripción del vértigo que la burguesía imprime a la vida moderna. Dio título a un ensayo clásico de Marshall Berman.",
+    "source": "Manifiesto del Partido Comunista",
+    "year": 1848,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-marx-08",
+    "quote": "El capital es trabajo muerto que, como un vampiro, sólo vive chupando trabajo vivo.",
+    "correctAnswer": "marx",
+    "explanation": "Imagen gótica del capítulo sobre la jornada laboral en El Capital. Marx recurre a menudo a metáforas de terror.",
+    "source": "El Capital, libro I, capítulo X",
+    "year": 1867,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-marx-09",
+    "quote": "No es la conciencia del hombre la que determina su ser, sino su ser social el que determina su conciencia.",
+    "correctAnswer": "marx",
+    "explanation": "Formulación más precisa del materialismo histórico, en el prólogo de 1859.",
+    "source": "Contribución a la crítica de la economía política, prólogo",
+    "year": 1859,
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-marx-10",
+    "quote": "Las ideas dominantes de una época han sido siempre las ideas de su clase dominante.",
+    "correctAnswer": "marx",
+    "explanation": "Tesis sobre la ideología que aparece tanto en el Manifiesto como en La ideología alemana.",
+    "source": "Manifiesto del Partido Comunista, capítulo II",
+    "year": 1848,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-marx-11",
+    "quote": "La violencia es la partera de toda sociedad vieja que lleva en sus entrañas otra nueva.",
+    "correctAnswer": "marx",
+    "explanation": "Sentencia del capítulo sobre la llamada acumulación originaria, dedicado a los orígenes violentos del capital.",
+    "source": "El Capital, libro I, capítulo XXIV",
+    "year": 1867,
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-marx-12",
+    "quote": "Los obreros no tienen patria.",
+    "correctAnswer": "marx",
+    "explanation": "Argumento internacionalista frente a la acusación de que los comunistas querían abolir las naciones.",
+    "source": "Manifiesto del Partido Comunista, capítulo II",
+    "year": 1848,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-marx-13",
+    "quote": "El obrero se siente en su trabajo fuera de sí, y sólo fuera del trabajo se siente en sí.",
+    "correctAnswer": "marx",
+    "explanation": "Descripción del trabajo alienado en los manuscritos juveniles, publicados casi un siglo después de escritos.",
+    "source": "Manuscritos económico-filosóficos",
+    "year": 1844,
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-marx-14",
+    "quote": "Todos los grandes hechos de la historia universal aparecen dos veces: una vez como tragedia y otra como farsa.",
+    "correctAnswer": "marx",
+    "explanation": "Apertura del 18 Brumario, donde Marx completa una observación de Hegel sobre la repetición histórica.",
+    "source": "El 18 Brumario de Luis Bonaparte",
+    "year": 1852,
+    "difficulty": "medium"
+  },
+  {
+    "id": "q-marx-15",
+    "quote": "La producción de demasiadas cosas útiles da como resultado demasiada gente inútil.",
+    "correctAnswer": "marx",
+    "explanation": "Paradoja de los Manuscritos de 1844 sobre la miseria que acompaña a la abundancia industrial.",
+    "source": "Manuscritos económico-filosóficos",
+    "year": 1844,
+    "difficulty": "hard"
   }
 ]

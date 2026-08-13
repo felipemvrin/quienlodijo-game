@@ -1,5 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Jesús">
-  <circle cx="64" cy="64" r="60" fill="#f2f0e6" />
-  <circle cx="64" cy="64" r="44" fill="none" stroke="#6b5a2b" stroke-width="3" />
-  <path d="M64 34v60M46 54h36" stroke="#6b5a2b" stroke-width="8" stroke-linecap="round" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-labelledby="titulo">
+  <title id="titulo">Jesús de Nazaret</title>
+  <defs>
+    <radialGradient id="halo" cx="50%" cy="38%" r="55%">
+      <stop offset="0%" stop-color="#fff6d8" />
+      <stop offset="100%" stop-color="#f2f0e6" />
+    </radialGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="96" fill="url(#halo)" />
+  <circle cx="100" cy="78" r="52" fill="none" stroke="#e0c765" stroke-width="5" />
+
+  <path d="M62 168c6-30 19-45 38-45s32 15 38 45z" fill="#8c7a4a" />
+  <path d="M100 52c22 0 34 16 34 40 0 26-15 41-34 41S66 118 66 92c0-24 12-40 34-40z" fill="#e8d9bd" />
+  <path
+    d="M100 44c26 0 40 18 40 44 0 6-1 12-3 17-3-13-7-22-13-27-9 8-30 10-45 3-4 6-6 15-7 24-2-5-3-11-3-17 0-26 5-44 31-44z"
+    fill="#6b5a2b"
+  />
+  <path d="M84 140c5 12 11 18 16 18s11-6 16-18c-10 5-22 5-32 0z" fill="#6b5a2b" />
+  <circle cx="86" cy="92" r="4" fill="#3b3120" />
+  <circle cx="114" cy="92" r="4" fill="#3b3120" />
+  <path d="M88 112c7 5 17 5 24 0" fill="none" stroke="#3b3120" stroke-width="3" stroke-linecap="round" />
 </svg>

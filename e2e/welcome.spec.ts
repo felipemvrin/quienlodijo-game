@@ -9,11 +9,12 @@ test.describe('Pantalla de bienvenida', () => {
     await expect(page.getByText('Karl Marx')).toBeVisible();
   });
 
-  test('el botón Comenzar responde', async ({ page }) => {
+  test('el botón Comenzar lleva a la creación de partida', async ({ page }) => {
     await page.goto('/');
 
     await page.getByRole('button', { name: /comenzar/i }).click();
 
-    await expect(page.getByRole('status')).toBeVisible();
+    await expect(page).toHaveURL(/\/partida\/nueva$/);
+    await expect(page.getByRole('heading', { name: /nueva partida/i })).toBeVisible();
   });
 });
