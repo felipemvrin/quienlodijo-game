@@ -10,6 +10,7 @@ export type SoundKey =
   | 'sfx.countdown'
   | 'sfx.correct'
   | 'sfx.incorrect'
+  | 'sfx.laugh'
   | 'sfx.reveal'
   | 'sfx.victory';
 
@@ -30,6 +31,7 @@ const SOUND_MANIFEST: Record<SoundKey, SoundDefinition> = {
   'sfx.countdown': { src: 'assets/audio/sfx/countdown.mp3' },
   'sfx.correct': { src: 'assets/audio/sfx/correct.mp3' },
   'sfx.incorrect': { src: 'assets/audio/sfx/incorrect.mp3' },
+  'sfx.laugh': { src: 'assets/audio/sfx/laugh.mp3' },
   'sfx.reveal': { src: 'assets/audio/sfx/reveal.mp3' },
   'sfx.victory': { src: 'assets/audio/sfx/victory.mp3' },
 };
@@ -40,6 +42,7 @@ const SYNTHETIC_FALLBACK: Partial<Record<SoundKey, SyntheticSfx>> = {
   'sfx.countdown': 'countdown',
   'sfx.correct': 'correct',
   'sfx.incorrect': 'incorrect',
+  'sfx.laugh': 'laugh',
   'sfx.reveal': 'reveal',
   'sfx.victory': 'victory',
 };

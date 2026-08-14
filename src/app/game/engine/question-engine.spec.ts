@@ -7,7 +7,7 @@ const questions: Question[] = ['q1', 'q2', 'q3'].map((id) => ({
   quote: `Frase ${id}`,
   correctAnswer: 'jesus',
   explanation: 'Explicación',
-  difficulty: 'easy',
+  difficulty: 'medium',
 }));
 
 describe('QuestionEngine', () => {

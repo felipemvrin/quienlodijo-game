@@ -14,7 +14,7 @@
   --ql-color-border: #3d2a5c;
 
   --ql-color-text: #f6f1ff;
-  --ql-color-text-muted: #b3a3cc;
+  --ql-color-text-muted: #ede1ff;
   --ql-color-text-inverse: #120b1f;
 
   --ql-color-accent: #ffcf3f;
@@ -29,7 +29,7 @@
   --ql-color-incorrect: #ff5470;
 
   /* ---------- Tipografía ---------- */
-  --ql-font-display: 'Bebas Neue', 'Impact', 'Haettenschweiler', system-ui, sans-serif;
+  --ql-font-display: 'Libre Baskerville', 'Courier New', monospace;
   --ql-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --ql-text-display: 3.5rem;
@@ -67,6 +67,9 @@
   --ql-shadow-md: 0 8px 20px -6px rgb(10 6 19 / 0.6);
   --ql-shadow-lg: 0 20px 45px -12px rgb(10 6 19 / 0.75);
   --ql-shadow-glow: 0 0 32px -4px rgb(255 207 63 / 0.55);
+
+  /* ---------- Imágenes ---------- */
+  --ql-image-stage: url('/bg-game.jpeg');
 
   /* ---------- Movimiento ---------- */
   --ql-duration-fast: 150ms;

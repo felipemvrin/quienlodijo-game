@@ -4,15 +4,32 @@ import { expect, test, type Page } from '@playwright/test';
 async function crearPartida(page: Page): Promise<void> {
   await page.goto('/partida/nueva');
 
-  const avatares = page.getByRole('group', { name: 'Elegir avatar' });
-  await avatares.nth(0).getByRole('button').nth(0).click();
-  await avatares.nth(1).getByRole('button').nth(1).click();
-
   await page.getByRole('button', { name: /empezar/i }).click();
   await expect(page).toHaveURL(/\/partida$/);
 }
 
 test.describe('Partida', () => {
+  test('no permite empezar hasta cargar el catálogo', async ({ page }) => {
+    let releaseAvatars!: () => void;
+    const avatarsReady = new Promise<void>((resolve) => {
+      releaseAvatars = resolve;
+    });
+
+    await page.route('**/assets/data/avatars.json', async (route) => {
+      await avatarsReady;
+      await route.continue();
+    });
+
+    await page.goto('/partida/nueva');
+
+    const empezar = page.getByRole('button', { name: /empezar/i });
+    await expect(empezar).toBeDisabled();
+
+    releaseAvatars();
+
+    await expect(empezar).toBeEnabled();
+  });
+
   test('el tablero muestra la frase y las dos respuestas', async ({ page }) => {
     await crearPartida(page);
 

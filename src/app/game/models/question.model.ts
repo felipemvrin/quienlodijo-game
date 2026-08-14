@@ -2,7 +2,8 @@ import type { CharacterId } from './character.model';
 
 export type QuestionId = string;
 
-export type Difficulty = 'easy' | 'medium' | 'hard';
+/** El juego no contempla frases fáciles: la gracia está en que la atribución sea dudosa. */
+export type Difficulty = 'medium' | 'hard';
 
 /** Una frase atribuible a uno de los personajes del juego. */
 export interface Question {

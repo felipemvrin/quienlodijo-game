@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import type { Question } from '../../../game/models/question.model';
 
 const DIFFICULTY_LABELS: Record<Question['difficulty'], string> = {
-  easy: 'Fácil',
   medium: 'Media',
   hard: 'Difícil',
 };

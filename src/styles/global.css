@@ -54,6 +54,30 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Escenario de fondo. Va en un pseudo-elemento fijo porque `background-attachment: fixed`
+   no funciona en iOS. El velo mantiene el contraste del texto sobre la ilustración. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--ql-color-bg-deep) 72%, transparent) 0%,
+      color-mix(in srgb, var(--ql-color-bg-deep) 55%, transparent) 45%,
+      color-mix(in srgb, var(--ql-color-bg-deep) 85%, transparent) 100%
+    ),
+    radial-gradient(
+      60% 55% at 50% 45%,
+      color-mix(in srgb, var(--ql-color-bg-deep) 78%, transparent) 0%,
+      transparent 100%
+    ),
+    var(--ql-image-stage) center / cover no-repeat,
+    var(--ql-color-bg-deep);
+  pointer-events: none;
+}
+
 :focus-visible {
   outline: 3px solid var(--ql-color-accent);
   outline-offset: 3px;

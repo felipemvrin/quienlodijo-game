@@ -75,16 +75,26 @@ const TICK_MS = 100;
         </div>
 
         @if (game.lastResult(); as result) {
-          <div #reveal class="board__reveal">
-            <app-answer-reveal
-              [correct]="result.correct"
-              [character]="correctCharacter()!"
-              [points]="result.pointsAwarded"
-              [timedOut]="result.answer.choice === null"
-            />
-            <app-button size="lg" (pressed)="next()">
-              {{ isLastTurn() ? 'Ver resultado' : 'Siguiente' }}
-            </app-button>
+          <div class="board__reveal" role="presentation">
+            <div
+              #reveal
+              class="board__reveal-dialog"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Resultado de la ronda"
+            >
+              @if (correctCharacter(); as character) {
+                <app-answer-reveal
+                  [correct]="result.correct"
+                  [character]="character"
+                  [points]="result.pointsAwarded"
+                  [timedOut]="result.answer.choice === null"
+                />
+              }
+              <app-button size="lg" (pressed)="next()">
+                {{ isLastTurn() ? 'Ver resultado' : 'Siguiente' }}
+              </app-button>
+            </div>
           </div>
         }
       }
@@ -127,10 +137,26 @@ const TICK_MS = 100;
     }
 
     .board__reveal {
+      position: fixed;
+      inset: 0;
+      z-index: var(--ql-z-overlay);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--ql-space-4);
+      background: rgb(10 6 19 / 0.72);
+      backdrop-filter: blur(4px);
+    }
+
+    .board__reveal-dialog {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: var(--ql-space-3);
+      width: min(100%, 28rem);
+      padding: var(--ql-space-4);
+      border-radius: var(--ql-radius-lg);
+      box-shadow: var(--ql-shadow-lg);
     }
 
     .board__scores {
@@ -228,7 +254,7 @@ export class BoardPage implements OnInit {
   ngOnInit(): void {
     void this.game.loadCatalog();
     this.audio.playMusic('music.game');
-    this.audio.preload(['sfx.correct', 'sfx.incorrect', 'sfx.countdown']);
+    this.audio.preload(['sfx.correct', 'sfx.incorrect', 'sfx.laugh', 'sfx.countdown']);
 
     const interval = setInterval(() => this.tick(), TICK_MS);
     this.destroyRef.onDestroy(() => clearInterval(interval));
@@ -251,6 +277,9 @@ export class BoardPage implements OnInit {
     }
     const result = this.game.answer(choice, TURN_TIME_MS - this.remainingMs());
     this.audio.play(result.correct ? 'sfx.correct' : 'sfx.incorrect');
+    if (!result.correct) {
+      this.audio.play('sfx.laugh');
+    }
   }
 
   protected next(): void {

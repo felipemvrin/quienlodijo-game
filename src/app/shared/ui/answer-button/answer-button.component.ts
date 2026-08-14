@@ -16,7 +16,12 @@ export type AnswerState = 'idle' | 'correct' | 'incorrect' | 'dimmed';
       [attr.aria-label]="'Responder ' + character().name"
       (click)="chosen.emit(character().id)"
     >
-      <span class="ql-answer__symbol" aria-hidden="true">{{ character().symbol }}</span>
+      <span
+        [class]="'ql-answer__symbol ql-answer__symbol--' + character().colorToken"
+        aria-hidden="true"
+      >
+        {{ character().symbol }}
+      </span>
       <span class="ql-answer__name">{{ character().name }}</span>
     </button>
   `,
@@ -55,6 +60,18 @@ export type AnswerState = 'idle' | 'correct' | 'incorrect' | 'dimmed';
     .ql-answer__symbol {
       font-size: 2.5rem;
       line-height: 1;
+      border-radius: var(--ql-radius-full);
+      padding: var(--ql-space-2);
+    }
+
+    .ql-answer__symbol--jesus {
+      background: var(--ql-color-jesus);
+      color: var(--ql-color-jesus-ink);
+    }
+
+    .ql-answer__symbol--marx {
+      background: var(--ql-color-marx);
+      color: var(--ql-color-marx-ink);
     }
 
     .ql-answer__name {

@@ -9,17 +9,15 @@ import {
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
-import { CharacterAvatarComponent } from '../../shared/ui/character-avatar/character-avatar.component';
 import { GameStateService } from '../../game/services/game-state.service';
 import { AudioService } from '../../game/services/audio.service';
 import { MAX_PLAYERS, MIN_PLAYERS } from '../../game/models/game.model';
-import type { AvatarId } from '../../game/models/avatar.model';
+import type { Avatar } from '../../game/models/avatar.model';
 import type { PlayerSetup } from '../../game/models/player.model';
 
 interface PlayerDraft {
   readonly id: string;
   name: string;
-  avatarId: AvatarId | null;
 }
 
 const PLAYER_COUNTS = Array.from(
@@ -27,11 +25,11 @@ const PLAYER_COUNTS = Array.from(
   (_, index) => MIN_PLAYERS + index,
 );
 
-/** Creación de partida: número de jugadores, nombres y avatares. */
+/** Creación de partida: número de jugadores y nombres. El avatar se asigna solo. */
 @Component({
   selector: 'app-setup-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, ButtonComponent, CharacterAvatarComponent],
+  imports: [FormsModule, ButtonComponent],
   template: `
     <section class="setup">
       <header class="setup__head">
@@ -53,12 +51,10 @@ const PLAYER_COUNTS = Array.from(
         }
       </div>
 
-      @if (loading()) {
-        <p class="setup__loading">Cargando avatares…</p>
-      } @else {
-        <ol class="setup__players">
-          @for (player of players(); track player.id; let index = $index) {
-            <li class="setup__player">
+      <ol class="setup__players">
+        @for (player of players(); track player.id; let index = $index) {
+          <li class="setup__player">
+            <div class="setup__field">
               <label class="setup__label" [attr.for]="'nombre-' + player.id">
                 Jugador {{ index + 1 }}
               </label>
@@ -71,46 +67,19 @@ const PLAYER_COUNTS = Array.from(
                 (ngModelChange)="rename(player.id, $event)"
                 [attr.placeholder]="'Jugador ' + (index + 1)"
               />
+            </div>
+          </li>
+        }
+      </ol>
 
-              <div class="setup__avatars" role="group" aria-label="Elegir avatar">
-                @for (avatar of avatars(); track avatar.id) {
-                  <button
-                    type="button"
-                    class="setup__avatar"
-                    [disabled]="isTaken(avatar.id, player.id)"
-                    [attr.aria-pressed]="avatar.id === player.avatarId"
-                    [attr.aria-label]="avatar.name"
-                    (click)="chooseAvatar(player.id, avatar.id)"
-                  >
-                    <app-character-avatar
-                      size="sm"
-                      [image]="avatar.image"
-                      [label]="avatar.name"
-                      [color]="avatar.color"
-                      [active]="avatar.id === player.avatarId"
-                    />
-                  </button>
-                }
-              </div>
-            </li>
-          }
-        </ol>
-
-        <p class="setup__hint" role="status">
-          @if (!allAvatarsChosen()) {
-            Cada jugador necesita un avatar distinto.
-          } @else {
-            ¡Listos para empezar!
-          }
-        </p>
-
-        <div class="setup__actions">
-          <app-button variant="ghost" (pressed)="goBack()">Volver</app-button>
-          <app-button size="lg" [disabled]="!allAvatarsChosen()" (pressed)="start()">
-            Empezar
-          </app-button>
-        </div>
+      @if (statusMessage(); as message) {
+        <p class="setup__status" role="status">{{ message }}</p>
       }
+
+      <div class="setup__actions">
+        <app-button variant="ghost" (pressed)="goBack()">Volver</app-button>
+        <app-button size="lg" [disabled]="loading()" (pressed)="start()">Empezar</app-button>
+      </div>
     </section>
   `,
   styles: `
@@ -182,12 +151,20 @@ const PLAYER_COUNTS = Array.from(
     }
 
     .setup__player {
-      display: grid;
-      gap: var(--ql-space-2);
+      display: flex;
+      align-items: center;
+      gap: var(--ql-space-3);
       padding: var(--ql-space-3);
       background: var(--ql-color-surface);
       border: 2px solid var(--ql-color-border);
       border-radius: var(--ql-radius-lg);
+    }
+
+    .setup__field {
+      flex: 1;
+      display: grid;
+      gap: var(--ql-space-1);
+      min-width: 0;
     }
 
     .setup__label {
@@ -206,36 +183,18 @@ const PLAYER_COUNTS = Array.from(
       font: inherit;
     }
 
-    .setup__avatars {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--ql-space-2);
-    }
-
-    .setup__avatar {
-      padding: 0;
-      background: none;
-      border: none;
-      border-radius: var(--ql-radius-full);
-      cursor: pointer;
-    }
-
-    .setup__avatar:disabled {
-      opacity: 0.25;
-      cursor: not-allowed;
-    }
-
-    .setup__hint {
-      margin: 0;
-      font-size: var(--ql-text-caption);
-      color: var(--ql-color-text-muted);
-    }
-
     .setup__actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: var(--ql-space-3);
+    }
+
+    .setup__status {
+      margin: 0;
+      font-size: var(--ql-text-caption);
+      color: var(--ql-color-text-muted);
+      text-align: center;
     }
 
     @media (min-width: 640px) {
@@ -251,20 +210,26 @@ export class SetupPage implements OnInit {
   private readonly router = inject(Router);
 
   protected readonly playerCounts = PLAYER_COUNTS;
-  protected readonly avatars = this.game.avatars;
   protected readonly loading = this.game.loading;
 
   private readonly drafts = signal<PlayerDraft[]>(createDrafts(MIN_PLAYERS));
+  private readonly catalogError = signal<string | null>(null);
 
   protected readonly players = this.drafts.asReadonly();
   protected readonly playerCount = computed(() => this.drafts().length);
-  protected readonly allAvatarsChosen = computed(() =>
-    this.drafts().every((player) => player.avatarId !== null),
+  protected readonly statusMessage = computed(() =>
+    this.loading() ? 'Cargando avatares…' : this.catalogError(),
   );
 
   ngOnInit(): void {
-    void this.game.loadCatalog();
+    void this.ensureCatalog();
     this.audio.playMusic('music.menu');
+  }
+
+  /** Un avatar distinto por jugador, en el orden del catálogo. */
+  protected avatarOf(index: number): Avatar | undefined {
+    const avatars = this.game.avatars();
+    return avatars.length ? avatars[index % avatars.length] : undefined;
   }
 
   protected setPlayerCount(count: number): void {
@@ -282,31 +247,42 @@ export class SetupPage implements OnInit {
     );
   }
 
-  protected chooseAvatar(id: string, avatarId: AvatarId): void {
-    this.audio.play('sfx.button');
-    this.drafts.update((current) =>
-      current.map((player) => (player.id === id ? { ...player, avatarId } : player)),
-    );
-  }
-
-  protected isTaken(avatarId: AvatarId, playerId: string): boolean {
-    return this.drafts().some((player) => player.avatarId === avatarId && player.id !== playerId);
-  }
-
   protected goBack(): void {
     void this.router.navigate(['/']);
   }
 
   protected async start(): Promise<void> {
+    if (!(await this.ensureCatalog())) {
+      return;
+    }
+
     const players: PlayerSetup[] = this.drafts().map((draft, index) => ({
       id: draft.id,
       name: draft.name.trim() || `Jugador ${index + 1}`,
-      avatarId: draft.avatarId as AvatarId,
+      avatarId: this.avatarOf(index)?.id ?? '',
     }));
 
     this.audio.play('sfx.button');
     await this.game.startGame(players);
     await this.router.navigate(['/partida']);
+  }
+
+  private async ensureCatalog(): Promise<boolean> {
+    this.catalogError.set(null);
+
+    try {
+      await this.game.loadCatalog();
+    } catch {
+      this.catalogError.set('No se pudieron cargar los avatares. Pulsa Empezar para reintentar.');
+      return false;
+    }
+
+    if (this.game.avatars().length < this.playerCount()) {
+      this.catalogError.set('No hay suficientes avatares para esta partida.');
+      return false;
+    }
+
+    return true;
   }
 }
 
@@ -314,6 +290,5 @@ function createDrafts(count: number, offset = 0): PlayerDraft[] {
   return Array.from({ length: count }, (_, index) => ({
     id: `p${offset + index + 1}`,
     name: '',
-    avatarId: null,
   }));
 }

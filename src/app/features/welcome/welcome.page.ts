@@ -62,11 +62,10 @@ import { AudioService } from '../../game/services/audio.service';
 
     .welcome__title {
       margin: 0;
-      font-family: var(--ql-font-display);
-      font-size: var(--ql-text-display);
+      font-family:  Special Elite, 'Courier New', monospace;
+      font-size: 65px;
       line-height: var(--ql-leading-display);
       letter-spacing: var(--ql-tracking-display);
-      text-transform: uppercase;
       text-wrap: balance;
       text-shadow: 0 6px 0 rgb(0 0 0 / 0.35);
     }
@@ -78,13 +77,14 @@ import { AudioService } from '../../game/services/audio.service';
       justify-content: center;
       gap: var(--ql-space-3);
       font-family: var(--ql-font-display);
+      font-weight: 700;
+      text-shadow: 0 2px 0 rgb(0 0 0 / 0.35);
       font-size: 1.5rem;
       text-transform: uppercase;
     }
 
     .welcome__fighter {
       padding: var(--ql-space-2) var(--ql-space-4);
-      border: 2px solid currentColor;
       border-radius: var(--ql-radius-full);
     }
 
@@ -94,6 +94,12 @@ import { AudioService } from '../../game/services/audio.service';
 
     .welcome__fighter--marx {
       color: var(--ql-color-marx);
+    }
+    .welcome__fighter--marx span {
+      background: var(--ql-color-marx);
+      color: #fff;
+      border-radius: var(--ql-radius-full);
+      padding: 0 var(--ql-space-1);
     }
 
     .welcome__vs {

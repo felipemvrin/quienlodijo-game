@@ -3,14 +3,14 @@ import { QuestionCardComponent } from './question-card.component';
 import type { Question } from '../../../game/models/question.model';
 
 const question: Question = {
-  id: 'q-marx-01',
-  quote: 'La religión es el opio del pueblo.',
+  id: 'q-marx-solido-aire',
+  quote: 'Todo lo sólido se desvanece en el aire, todo lo sagrado es profanado.',
   correctAnswer: 'marx',
   explanation:
-    'La cita completa habla de la religión como «el suspiro de la criatura oprimida»: es más compleja de lo que suele recordarse.',
-  source: 'Contribución a la crítica de la filosofía del derecho de Hegel',
-  year: 1844,
-  difficulty: 'easy',
+    'Descripción del vértigo que la burguesía imprime a la vida moderna. Su tono apocalíptico despista: parece la denuncia de un predicador.',
+  source: 'Manifiesto del Partido Comunista',
+  year: 1848,
+  difficulty: 'medium',
 };
 
 const meta: Meta<QuestionCardComponent> = {
