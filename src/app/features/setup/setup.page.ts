@@ -72,9 +72,13 @@ const PLAYER_COUNTS = Array.from(
         }
       </ol>
 
+      @if (statusMessage(); as message) {
+        <p class="setup__status" role="status">{{ message }}</p>
+      }
+
       <div class="setup__actions">
         <app-button variant="ghost" (pressed)="goBack()">Volver</app-button>
-        <app-button size="lg" (pressed)="start()">Empezar</app-button>
+        <app-button size="lg" [disabled]="loading()" (pressed)="start()">Empezar</app-button>
       </div>
     </section>
   `,
@@ -186,6 +190,13 @@ const PLAYER_COUNTS = Array.from(
       gap: var(--ql-space-3);
     }
 
+    .setup__status {
+      margin: 0;
+      font-size: var(--ql-text-caption);
+      color: var(--ql-color-text-muted);
+      text-align: center;
+    }
+
     @media (min-width: 640px) {
       .setup__players {
         grid-template-columns: repeat(2, 1fr);
@@ -199,14 +210,19 @@ export class SetupPage implements OnInit {
   private readonly router = inject(Router);
 
   protected readonly playerCounts = PLAYER_COUNTS;
+  protected readonly loading = this.game.loading;
 
   private readonly drafts = signal<PlayerDraft[]>(createDrafts(MIN_PLAYERS));
+  private readonly catalogError = signal<string | null>(null);
 
   protected readonly players = this.drafts.asReadonly();
   protected readonly playerCount = computed(() => this.drafts().length);
+  protected readonly statusMessage = computed(() =>
+    this.loading() ? 'Cargando avatares…' : this.catalogError(),
+  );
 
   ngOnInit(): void {
-    void this.game.loadCatalog();
+    void this.ensureCatalog();
     this.audio.playMusic('music.menu');
   }
 
@@ -236,6 +252,10 @@ export class SetupPage implements OnInit {
   }
 
   protected async start(): Promise<void> {
+    if (!(await this.ensureCatalog())) {
+      return;
+    }
+
     const players: PlayerSetup[] = this.drafts().map((draft, index) => ({
       id: draft.id,
       name: draft.name.trim() || `Jugador ${index + 1}`,
@@ -245,6 +265,24 @@ export class SetupPage implements OnInit {
     this.audio.play('sfx.button');
     await this.game.startGame(players);
     await this.router.navigate(['/partida']);
+  }
+
+  private async ensureCatalog(): Promise<boolean> {
+    this.catalogError.set(null);
+
+    try {
+      await this.game.loadCatalog();
+    } catch {
+      this.catalogError.set('No se pudieron cargar los avatares. Pulsa Empezar para reintentar.');
+      return false;
+    }
+
+    if (this.game.avatars().length < this.playerCount()) {
+      this.catalogError.set('No hay suficientes avatares para esta partida.');
+      return false;
+    }
+
+    return true;
   }
 }
 

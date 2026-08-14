@@ -9,6 +9,27 @@ async function crearPartida(page: Page): Promise<void> {
 }
 
 test.describe('Partida', () => {
+  test('no permite empezar hasta cargar el catálogo', async ({ page }) => {
+    let releaseAvatars!: () => void;
+    const avatarsReady = new Promise<void>((resolve) => {
+      releaseAvatars = resolve;
+    });
+
+    await page.route('**/assets/data/avatars.json', async (route) => {
+      await avatarsReady;
+      await route.continue();
+    });
+
+    await page.goto('/partida/nueva');
+
+    const empezar = page.getByRole('button', { name: /empezar/i });
+    await expect(empezar).toBeDisabled();
+
+    releaseAvatars();
+
+    await expect(empezar).toBeEnabled();
+  });
+
   test('el tablero muestra la frase y las dos respuestas', async ({ page }) => {
     await crearPartida(page);
 

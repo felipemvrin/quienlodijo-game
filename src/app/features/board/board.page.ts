@@ -83,12 +83,14 @@ const TICK_MS = 100;
               aria-modal="true"
               aria-label="Resultado de la ronda"
             >
-              <app-answer-reveal
-                [correct]="result.correct"
-                [character]="correctCharacter()!"
-                [points]="result.pointsAwarded"
-                [timedOut]="result.answer.choice === null"
-              />
+              @if (correctCharacter(); as character) {
+                <app-answer-reveal
+                  [correct]="result.correct"
+                  [character]="character"
+                  [points]="result.pointsAwarded"
+                  [timedOut]="result.answer.choice === null"
+                />
+              }
               <app-button size="lg" (pressed)="next()">
                 {{ isLastTurn() ? 'Ver resultado' : 'Siguiente' }}
               </app-button>
