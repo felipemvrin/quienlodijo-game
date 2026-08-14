@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, effect, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import type { Character } from '../../../game/models/character.model';
-import { AudioService } from '../../../game/services/audio.service';
 
 /** Panel de revelación: acierto o fallo, personaje correcto y puntos ganados. */
 @Component({
@@ -60,20 +59,10 @@ import { AudioService } from '../../../game/services/audio.service';
   `,
 })
 export class AnswerRevealComponent {
-  private readonly audio = inject(AudioService);
-
   readonly correct = input.required<boolean>();
   /** Personaje que realmente dijo la frase. */
   readonly character = input.required<Character>();
   readonly points = input.required<number>();
   /** Diferencia un fallo de una respuesta no enviada a tiempo. */
   readonly timedOut = input(false);
-
-  constructor() {
-    effect(() => {
-      if (!this.correct() && !this.timedOut()) {
-        this.audio.play('sfx.laugh');
-      }
-    });
-  }
 }

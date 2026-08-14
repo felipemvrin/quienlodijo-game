@@ -252,7 +252,7 @@ export class BoardPage implements OnInit {
   ngOnInit(): void {
     void this.game.loadCatalog();
     this.audio.playMusic('music.game');
-    this.audio.preload(['sfx.correct', 'sfx.incorrect', 'sfx.countdown']);
+    this.audio.preload(['sfx.correct', 'sfx.incorrect', 'sfx.laugh', 'sfx.countdown']);
 
     const interval = setInterval(() => this.tick(), TICK_MS);
     this.destroyRef.onDestroy(() => clearInterval(interval));
@@ -275,6 +275,9 @@ export class BoardPage implements OnInit {
     }
     const result = this.game.answer(choice, TURN_TIME_MS - this.remainingMs());
     this.audio.play(result.correct ? 'sfx.correct' : 'sfx.incorrect');
+    if (!result.correct) {
+      this.audio.play('sfx.laugh');
+    }
   }
 
   protected next(): void {
