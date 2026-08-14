@@ -62,7 +62,7 @@ import { AudioService } from '../../game/services/audio.service';
 
     .welcome__title {
       margin: 0;
-      font-family: var(--ql-font-display);
+      font-family:  Special Elite, 'Courier New', monospace;
       font-size: 65px;
       line-height: var(--ql-leading-display);
       letter-spacing: var(--ql-tracking-display);
@@ -77,6 +77,8 @@ import { AudioService } from '../../game/services/audio.service';
       justify-content: center;
       gap: var(--ql-space-3);
       font-family: var(--ql-font-display);
+      font-weight: 700;
+      text-shadow: 0 2px 0 rgb(0 0 0 / 0.35);
       font-size: 1.5rem;
       text-transform: uppercase;
     }
