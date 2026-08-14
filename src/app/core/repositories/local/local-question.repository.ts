@@ -32,6 +32,8 @@ export class LocalQuestionRepository implements QuestionRepository {
       return cached;
     }
     const request = firstValueFrom(this.http.get<T[]>(`${DATA_PATH}/${name}.json`));
+    // Si la carga falla, se descarta del caché para permitir un reintento posterior.
+    request.catch(() => this.cache.delete(name));
     this.cache.set(name, request);
     return request;
   }
