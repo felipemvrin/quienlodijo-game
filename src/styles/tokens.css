@@ -14,7 +14,7 @@
   --ql-color-border: #3d2a5c;
 
   --ql-color-text: #f6f1ff;
-  --ql-color-text-muted: #b3a3cc;
+  --ql-color-text-muted: #ede1ff;
   --ql-color-text-inverse: #120b1f;
 
   --ql-color-accent: #ffcf3f;
@@ -29,7 +29,7 @@
   --ql-color-incorrect: #ff5470;
 
   /* ---------- Tipografía ---------- */
-  --ql-font-display: 'Bebas Neue', 'Impact', 'Haettenschweiler', system-ui, sans-serif;
+  --ql-font-display: 'Special Elite', 'Courier New', monospace;
   --ql-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --ql-text-display: 3.5rem;

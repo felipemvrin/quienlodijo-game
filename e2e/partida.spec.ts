@@ -4,10 +4,6 @@ import { expect, test, type Page } from '@playwright/test';
 async function crearPartida(page: Page): Promise<void> {
   await page.goto('/partida/nueva');
 
-  const avatares = page.getByRole('group', { name: 'Elegir avatar' });
-  await avatares.nth(0).getByRole('button').nth(0).click();
-  await avatares.nth(1).getByRole('button').nth(1).click();
-
   await page.getByRole('button', { name: /empezar/i }).click();
   await expect(page).toHaveURL(/\/partida$/);
 }

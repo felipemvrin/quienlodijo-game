@@ -55,6 +55,10 @@ export type AnswerState = 'idle' | 'correct' | 'incorrect' | 'dimmed';
     .ql-answer__symbol {
       font-size: 2.5rem;
       line-height: 1;
+      border-radius: var(--ql-radius-full);
+      background: var(--answer-color, var(--ql-color-border));
+      color: var(--ql-color-text-inverse);
+      padding: var(--ql-space-2);
     }
 
     .ql-answer__name {
