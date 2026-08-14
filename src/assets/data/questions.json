@@ -1,67 +1,76 @@
 [
   {
-    "id": "q-jesus-primeros-ultimos",
-    "quote": "Así, los primeros serán últimos, y los últimos primeros.",
+    "id": "q-jesus-casas-viudas",
+    "quote": "Se pasean con ropas ostentosas, ocupan los mejores asientos… y mientras tanto devoran las casas de las viudas.",
     "correctAnswer": "jesus",
-    "explanation": "Cierre de la parábola de los obreros de la viña. Es una inversión del orden social que suena a consigna revolucionaria, pero nace de una disputa sobre el salario de una jornada.",
-    "source": "Evangelio de Mateo 20:16 (Reina-Valera 1960)",
+    "explanation": "Ataque a los maestros de la ley: acusa a la élite religiosa de vivir del expolio de las mujeres más desprotegidas. Casi nunca se predica este pasaje.",
+    "source": "Evangelio de Marcos 12:38-40 (versión en español actual)",
     "difficulty": "hard"
   },
   {
-    "id": "q-jesus-vende-todo",
-    "quote": "Anda, vende todo lo que tienes, y dalo a los pobres.",
+    "id": "q-jesus-ay-ricos",
+    "quote": "¡Pobres de ustedes, los ricos, porque ya recibieron su consuelo!",
     "correctAnswer": "jesus",
-    "explanation": "Condición que Jesús pone al joven rico. La redistribución total de la propiedad privada aquí es una exigencia espiritual, no económica.",
-    "source": "Evangelio de Marcos 10:21 (Reina-Valera 1960)",
+    "explanation": "Contrapartida directa de la bienaventuranza anterior. Es una condena de clase explícita, en el mismo sermón y con el mismo público delante.",
+    "source": "Evangelio de Lucas 6:24 (versión en español actual)",
     "difficulty": "hard"
   },
   {
-    "id": "q-jesus-espada",
-    "quote": "No penséis que he venido para traer paz a la tierra; no he venido para traer paz, sino espada.",
+    "id": "q-jesus-banquete-pobres",
+    "quote": "Cuando ofrezcas un banquete, no invites a tus amigos ni a tus parientes ricos: invita a los pobres, a los enfermos, a los cojos y a los ciegos.",
     "correctAnswer": "jesus",
-    "explanation": "Anuncio de que su mensaje dividirá familias y comunidades. Es de las frases evangélicas que más se parecen a un llamamiento al conflicto.",
-    "source": "Evangelio de Mateo 10:34 (Reina-Valera 1960)",
+    "explanation": "Propone romper el circuito de favores entre iguales y repartir hacia quien no puede devolver nada. Es una crítica de la reciprocidad social que casi nadie recuerda.",
+    "source": "Evangelio de Lucas 14:12-13 (versión en español actual)",
     "difficulty": "hard"
   },
   {
-    "id": "q-jesus-sabado",
-    "quote": "El día de reposo fue hecho por causa del hombre, y no el hombre por causa del día de reposo.",
+    "id": "q-jesus-renuncia-posee",
+    "quote": "Cualquiera de ustedes que no renuncie a todo lo que tiene no puede ser mi discípulo.",
     "correctAnswer": "jesus",
-    "explanation": "Jesús subordina la institución a la necesidad humana. La estructura del argumento es idéntica a la crítica moderna de las instituciones que se vuelven contra quienes las crearon.",
-    "source": "Evangelio de Marcos 2:27 (Reina-Valera 1960)",
+    "explanation": "No es un consejo para unos pocos: la renuncia a la propiedad aparece como requisito de entrada. Leída en frío, es más radical que cualquier programa de partido.",
+    "source": "Evangelio de Lucas 14:33 (versión en español actual)",
     "difficulty": "hard"
   },
   {
-    "id": "q-jesus-dos-senores",
-    "quote": "Ninguno puede servir a dos señores… No podéis servir a Dios y a las riquezas.",
+    "id": "q-jesus-viuda-sobra",
+    "quote": "Todos ellos dieron de lo que les sobraba; pero ella, de su pobreza, dio todo lo que tenía para vivir.",
     "correctAnswer": "jesus",
-    "explanation": "El dinero aparece como un poder rival que reclama servidumbre. En el original griego la palabra es «mamón», tratada como un ídolo con voluntad propia.",
-    "source": "Evangelio de Mateo 6:24 (Reina-Valera 1960)",
+    "explanation": "Comentario de Jesús al ver a una viuda echar dos monedas en el cepillo del templo. Mide la donación por lo que le cuesta a quien da, no por la cifra.",
+    "source": "Evangelio de Lucas 21:3-4 (versión en español actual)",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-jesus-benefactores",
+    "quote": "Los que ejercen autoridad sobre las naciones se hacen llamar benefactores; pero entre ustedes no debe ser así.",
+    "correctAnswer": "jesus",
+    "explanation": "La versión de Lucas añade un detalle demoledor: los que dominan se presentan como bienhechores del pueblo. La crítica de la propaganda del poder tiene veinte siglos.",
+    "source": "Evangelio de Lucas 22:25-26 (versión en español actual)",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-jesus-cargas-pesadas",
+    "quote": "Imponen cargas pesadas y difíciles de llevar sobre los hombros de los demás, pero ellos no están dispuestos a mover ni un dedo para levantarlas.",
+    "correctAnswer": "jesus",
+    "explanation": "Invectiva contra los escribas y fariseos. La imagen de unos pocos que cargan el peso sobre las espaldas de otros es la definición intuitiva de explotación.",
+    "source": "Evangelio de Mateo 23:4 (versión en español actual)",
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-jesus-prestad",
+    "quote": "Hagan el bien y presten sin esperar nada a cambio.",
+    "correctAnswer": "jesus",
+    "explanation": "Prestar sin interés equivale a negar el fundamento del capital financiero. La prohibición de la usura marcó la economía europea durante siglos.",
+    "source": "Evangelio de Lucas 6:35 (versión en español actual)",
     "difficulty": "medium"
   },
   {
-    "id": "q-jesus-pobres-siempre",
-    "quote": "Siempre tendréis a los pobres con vosotros.",
-    "correctAnswer": "jesus",
-    "explanation": "Dicho durante la unción en Betania. Se ha citado tanto para justificar la limosna como para señalar que la pobreza es estructural: casi nadie acierta su autor a la primera.",
-    "source": "Evangelio de Marcos 14:7 (Reina-Valera 1960)",
+    "id": "q-marx-reino-libertad",
+    "quote": "El reino de la libertad sólo empieza allí donde termina el trabajo impuesto por la necesidad.",
+    "correctAnswer": "marx",
+    "explanation": "Marx llama «reino de la libertad» al tiempo liberado del trabajo forzoso. La expresión es un calco laico del reino prometido en los evangelios.",
+    "source": "El Capital, libro III, capítulo XLVIII",
+    "year": 1894,
     "difficulty": "hard"
-  },
-  {
-    "id": "q-jesus-servidor",
-    "quote": "El que quiera hacerse grande entre vosotros será vuestro servidor.",
-    "correctAnswer": "jesus",
-    "explanation": "Respuesta a la disputa de los discípulos por los puestos de honor: una crítica de la jerarquía formulada dentro del propio grupo.",
-    "source": "Evangelio de Marcos 10:43 (Reina-Valera 1960)",
-    "difficulty": "hard"
-  },
-  {
-    "id": "q-jesus-espada-perecen",
-    "quote": "Todos los que tomen espada, a espada perecerán.",
-    "correctAnswer": "jesus",
-    "explanation": "Dicho en el momento del arresto, al detener a quien intentó defenderlo. Contrasta con la frase de la espada de Mateo 10 y confunde aún más la atribución.",
-    "source": "Evangelio de Mateo 26:52 (Reina-Valera 1960)",
-    "difficulty": "medium"
   },
   {
     "id": "q-marx-capacidades-necesidades",
@@ -73,40 +82,31 @@
     "difficulty": "hard"
   },
   {
-    "id": "q-marx-fuera-de-si",
-    "quote": "El obrero se siente en su trabajo fuera de sí, y sólo fuera del trabajo se siente en sí.",
+    "id": "q-marx-suspiro-oprimida",
+    "quote": "Es el suspiro de la criatura oprimida, el corazón de un mundo sin corazón, el espíritu de una situación sin espíritu.",
     "correctAnswer": "marx",
-    "explanation": "Descripción del trabajo alienado en los manuscritos juveniles. El vocabulario del alma dividida es prácticamente religioso.",
-    "source": "Manuscritos económico-filosóficos",
+    "explanation": "Así describe Marx la religión justo antes de llamarla «opio del pueblo». Aislada, la frase parece escrita por un místico, no por su crítico.",
+    "source": "Contribución a la crítica de la filosofía del derecho de Hegel",
     "year": 1844,
     "difficulty": "hard"
   },
   {
-    "id": "q-marx-gente-inutil",
-    "quote": "La producción de demasiadas cosas útiles da como resultado demasiada gente inútil.",
+    "id": "q-marx-generaciones-muertas",
+    "quote": "La tradición de todas las generaciones muertas oprime como una pesadilla el cerebro de los vivos.",
     "correctAnswer": "marx",
-    "explanation": "Paradoja sobre la miseria que acompaña a la abundancia industrial. Suena a sentencia moral sobre la vanidad de las riquezas.",
+    "explanation": "Imagen espectral del 18 Brumario. El peso de los muertos sobre los vivos es un motivo que atraviesa toda la literatura religiosa.",
+    "source": "El 18 Brumario de Luis Bonaparte",
+    "year": 1852,
+    "difficulty": "hard"
+  },
+  {
+    "id": "q-marx-enigma-historia",
+    "quote": "Es el enigma resuelto de la historia, y sabe que lo es.",
+    "correctAnswer": "marx",
+    "explanation": "Marx habla del comunismo en términos de revelación: un final de la historia que se reconoce a sí mismo. La estructura del anuncio es escatológica.",
     "source": "Manuscritos económico-filosóficos",
     "year": 1844,
     "difficulty": "hard"
-  },
-  {
-    "id": "q-marx-ser-social",
-    "quote": "No es la conciencia del hombre la que determina su ser, sino su ser social el que determina su conciencia.",
-    "correctAnswer": "marx",
-    "explanation": "Formulación más precisa del materialismo histórico, en el prólogo de 1859. La construcción sentenciosa imita la de un proverbio antiguo.",
-    "source": "Contribución a la crítica de la economía política, prólogo",
-    "year": 1859,
-    "difficulty": "hard"
-  },
-  {
-    "id": "q-marx-transformarlo",
-    "quote": "Los filósofos no han hecho más que interpretar de diversos modos el mundo, pero de lo que se trata es de transformarlo.",
-    "correctAnswer": "marx",
-    "explanation": "Undécima tesis sobre Feuerbach, publicada por Engels tras la muerte de Marx. Está grabada en su tumba.",
-    "source": "Tesis sobre Feuerbach, XI",
-    "year": 1845,
-    "difficulty": "medium"
   },
   {
     "id": "q-marx-partera",
