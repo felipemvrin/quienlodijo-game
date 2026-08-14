@@ -4,7 +4,14 @@
  * Sirven de sustituto libre de derechos mientras no existan los archivos de
  * `assets/audio/sfx/`: si un archivo está presente, `AudioService` lo prefiere.
  */
-export type SyntheticSfx = 'button' | 'countdown' | 'correct' | 'incorrect' | 'reveal' | 'victory';
+export type SyntheticSfx =
+  | 'button'
+  | 'countdown'
+  | 'correct'
+  | 'incorrect'
+  | 'laugh'
+  | 'reveal'
+  | 'victory';
 
 interface Note {
   readonly frequency: number;
@@ -26,6 +33,12 @@ const PATTERNS: Record<SyntheticSfx, readonly Note[]> = {
   incorrect: [
     { frequency: 233.08, at: 0, duration: 0.18, type: 'sawtooth', gain: 0.12 },
     { frequency: 174.61, at: 0.14, duration: 0.26, type: 'sawtooth', gain: 0.12 },
+  ],
+  laugh: [
+    { frequency: 440, at: 0, duration: 0.1, type: 'square' },
+    { frequency: 554.37, at: 0.11, duration: 0.1, type: 'square' },
+    { frequency: 440, at: 0.22, duration: 0.1, type: 'square' },
+    { frequency: 554.37, at: 0.33, duration: 0.16, type: 'square' },
   ],
   reveal: [
     { frequency: 392, at: 0, duration: 0.1 },

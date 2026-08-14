@@ -29,7 +29,7 @@
   --ql-color-incorrect: #ff5470;
 
   /* ---------- Tipografía ---------- */
-  --ql-font-display: 'Special Elite', 'Courier New', monospace;
+  --ql-font-display: 'Libre Baskerville', 'Courier New', monospace;
   --ql-font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --ql-text-display: 3.5rem;

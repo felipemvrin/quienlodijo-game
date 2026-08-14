@@ -56,6 +56,7 @@ export type ButtonSize = 'md' | 'lg';
 
     .ql-button--lg {
       padding: var(--ql-space-4) var(--ql-space-7);
+      font-weight: 600;
       font-size: 1.5rem;
     }
 
