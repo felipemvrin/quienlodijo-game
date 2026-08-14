@@ -10,14 +10,14 @@ const QUESTIONS: Question[] = [
     quote: 'Frase 1',
     correctAnswer: 'jesus',
     explanation: 'Explicación 1',
-    difficulty: 'easy',
+    difficulty: 'medium',
   },
   {
     id: 'q2',
     quote: 'Frase 2',
     correctAnswer: 'marx',
     explanation: 'Explicación 2',
-    difficulty: 'easy',
+    difficulty: 'medium',
   },
   {
     id: 'q3',

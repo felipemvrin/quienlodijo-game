@@ -68,6 +68,9 @@
   --ql-shadow-lg: 0 20px 45px -12px rgb(10 6 19 / 0.75);
   --ql-shadow-glow: 0 0 32px -4px rgb(255 207 63 / 0.55);
 
+  /* ---------- Imágenes ---------- */
+  --ql-image-stage: url('/bg-game.jpeg');
+
   /* ---------- Movimiento ---------- */
   --ql-duration-fast: 150ms;
   --ql-duration-base: 300ms;
