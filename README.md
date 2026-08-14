@@ -28,6 +28,16 @@ cuenta atrás y ver el marcador final. Faltan los assets definitivos y el modo o
 
 ---
 
+## Capturas
+
+<p align="center">
+  <img src="public/screen-01.png" alt="Pantalla de bienvenida de ¿Quién Lo Dijo?" width="30%" />
+  <img src="public/screen-02.png" alt="Tablero de juego con la frase y las respuestas" width="30%" />
+  <img src="public/screen-03.png" alt="Marcador final de la partida" width="30%" />
+</p>
+
+---
+
 ## Concepto del juego
 
 1. Pantalla de bienvenida.
