@@ -29,6 +29,7 @@ import type { CharacterId } from '../../game/models/character.model';
 /** Milisegundos disponibles para responder cada frase. */
 const TURN_TIME_MS = 15_000;
 const TICK_MS = 100;
+const QUOTE_AUDIO_PATH = 'assets/audio/quotes';
 
 /** Tablero de juego: frase, respuestas, cuenta atrás y revelación. */
 @Component({
@@ -234,7 +235,7 @@ export class BoardPage implements OnInit {
       }
       this.lastQuestionId = question.id;
       this.restartCountdown();
-      this.speech.speak(question.quote);
+      this.speech.speak(question.quote, `${QUOTE_AUDIO_PATH}/${question.id}.mp3`);
       const element = this.card()?.nativeElement;
       if (element) {
         this.animations.enter(element);
