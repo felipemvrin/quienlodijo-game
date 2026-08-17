@@ -33,9 +33,10 @@ online.
 ## Capturas
 
 <p align="center">
-  <img src="public/screen-01.png" alt="Pantalla de bienvenida de ¿Quién Lo Dijo?" width="30%" />
-  <img src="public/screen-02.png" alt="Tablero de juego con la frase y las respuestas" width="30%" />
-  <img src="public/screen-03.png" alt="Marcador final de la partida" width="30%" />
+  <img src="https://raw.githubusercontent.com/fmarin00/quienlodijo-game/main/public/screen-01.png" alt="Pantalla de bienvenida de ¿Quién Lo Dijo?" width="20%" />
+  <img src="https://raw.githubusercontent.com/fmarin00/quienlodijo-game/main/public/screen-02.png" alt="Tablero de juego con la frase y las respuestas" width="20%" />
+  <img src="https://raw.githubusercontent.com/fmarin00/quienlodijo-game/main/public/screen-03.png" alt="Marcador final de la partida" width="20%" />
+  <img src="https://raw.githubusercontent.com/fmarin00/quienlodijo-game/main/public/screen-04.png" alt="Pantalla Storybook" width="20%" />
 </p>
 
 ---
