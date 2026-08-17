@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import type { Character } from '../../../game/models/character.model';
+import type { Question } from '../../../game/models/question.model';
 
 /** Panel de revelación: acierto o fallo, personaje correcto y puntos ganados. */
 @Component({
@@ -13,6 +14,17 @@ import type { Character } from '../../../game/models/character.model';
       <p class="ql-reveal__author">
         <span aria-hidden="true">{{ character().symbol }}</span> Lo dijo {{ character().name }}
       </p>
+      <footer class="ql-reveal__footer">
+        <p class="ql-reveal__explanation">{{ question().explanation }}</p>
+        @if (question().source; as source) {
+          <p class="ql-reveal__source">
+            {{ source }}
+            @if (question().year) {
+              , {{ question().year }}
+            }
+          </p>
+        }
+      </footer>
       <p class="ql-reveal__points">+{{ points() }} pts</p>
     </div>
   `,
@@ -51,6 +63,23 @@ import type { Character } from '../../../game/models/character.model';
       color: var(--ql-color-text-muted);
     }
 
+    .ql-reveal__footer {
+      width: 100%;
+      margin-top: var(--ql-space-2);
+      padding-top: var(--ql-space-3);
+      border-top: 1px dashed var(--ql-color-border);
+    }
+
+    .ql-reveal__explanation {
+      margin: 0 0 var(--ql-space-2);
+    }
+
+    .ql-reveal__source {
+      margin: 0;
+      font-size: var(--ql-text-caption);
+      color: var(--ql-color-text-muted);
+    }
+
     .ql-reveal__points {
       margin: 0;
       font-family: var(--ql-font-display);
@@ -62,6 +91,7 @@ export class AnswerRevealComponent {
   readonly correct = input.required<boolean>();
   /** Personaje que realmente dijo la frase. */
   readonly character = input.required<Character>();
+  readonly question = input.required<Question>();
   readonly points = input.required<number>();
   /** Diferencia un fallo de una respuesta no enviada a tiempo. */
   readonly timedOut = input(false);

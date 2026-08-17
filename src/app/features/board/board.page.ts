@@ -60,7 +60,7 @@ const TICK_MS = 100;
         </div>
 
         <div #card class="board__card">
-          <app-question-card [question]="currentQuestion" [revealed]="revealed()" />
+          <app-question-card [question]="currentQuestion" />
         </div>
 
         <div class="board__answers">
@@ -87,6 +87,7 @@ const TICK_MS = 100;
                 <app-answer-reveal
                   [correct]="result.correct"
                   [character]="character"
+                  [question]="currentQuestion"
                   [points]="result.pointsAwarded"
                   [timedOut]="result.answer.choice === null"
                 />

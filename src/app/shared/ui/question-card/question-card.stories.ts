@@ -16,15 +16,11 @@ const question: Question = {
 const meta: Meta<QuestionCardComponent> = {
   title: 'Juego/QuestionCard',
   component: QuestionCardComponent,
-  args: { question, revealed: false },
+  args: { question },
   parameters: { layout: 'padded' },
 };
 
 export default meta;
 type Story = StoryObj<QuestionCardComponent>;
 
-export const SinRevelar: Story = {};
-
-export const Revelada: Story = {
-  args: { revealed: true },
-};
+export const Predeterminada: Story = {};

@@ -18,20 +18,6 @@ const DIFFICULTY_LABELS: Record<Question['difficulty'], string> = {
       </header>
 
       <blockquote class="ql-card__quote">“{{ question().quote }}”</blockquote>
-
-      @if (revealed()) {
-        <footer class="ql-card__footer">
-          <p class="ql-card__explanation">{{ question().explanation }}</p>
-          @if (question().source; as source) {
-            <p class="ql-card__source">
-              {{ source }}
-              @if (question().year) {
-                , {{ question().year }}
-              }
-            </p>
-          }
-        </footer>
-      }
     </article>
   `,
   styles: `
@@ -79,26 +65,10 @@ const DIFFICULTY_LABELS: Record<Question['difficulty'], string> = {
       text-wrap: balance;
     }
 
-    .ql-card__footer {
-      padding-top: var(--ql-space-3);
-      border-top: 1px dashed var(--ql-color-border);
-    }
-
-    .ql-card__explanation {
-      margin: 0 0 var(--ql-space-2);
-    }
-
-    .ql-card__source {
-      margin: 0;
-      font-size: var(--ql-text-caption);
-      color: var(--ql-color-text-muted);
-    }
   `,
 })
 export class QuestionCardComponent {
   readonly question = input.required<Question>();
-  /** Muestra explicación y fuente una vez revelada la respuesta. */
-  readonly revealed = input(false);
 
   protected difficultyLabel(): string {
     return DIFFICULTY_LABELS[this.question().difficulty];
