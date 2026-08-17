@@ -1,5 +1,24 @@
 import { SpeechService } from './speech.service';
 
+const howler = vi.hoisted(() => ({
+  constructor: vi.fn(),
+  play: vi.fn(),
+  stop: vi.fn(),
+  unload: vi.fn(),
+}));
+
+vi.mock('howler', () => ({
+  Howl: class {
+    readonly play = howler.play;
+    readonly stop = howler.stop;
+    readonly unload = howler.unload;
+
+    constructor(options: unknown) {
+      howler.constructor(options);
+    }
+  },
+}));
+
 class UtteranceStub {
   lang = '';
   rate = 1;
@@ -17,6 +36,7 @@ describe('SpeechService', () => {
   let speak: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
+    vi.clearAllMocks();
     cancel = vi.fn();
     speak = vi.fn();
     vi.stubGlobal('SpeechSynthesisUtterance', UtteranceStub);
@@ -28,6 +48,34 @@ describe('SpeechService', () => {
   });
 
   afterEach(() => vi.unstubAllGlobals());
+
+  it('reproduce el audio neuronal asociado a la frase', () => {
+    const service = new SpeechService();
+
+    service.speak('Primera frase', 'assets/audio/quotes/q-1.mp3');
+
+    expect(howler.constructor).toHaveBeenCalledWith(
+      expect.objectContaining({
+        src: ['assets/audio/quotes/q-1.mp3'],
+        html5: true,
+        preload: true,
+      }),
+    );
+    expect(howler.play).toHaveBeenCalledOnce();
+    expect(speak).not.toHaveBeenCalled();
+  });
+
+  it('usa Web Speech si el audio asociado no puede cargarse', () => {
+    const service = new SpeechService();
+
+    service.speak('Frase de respaldo', 'assets/audio/quotes/q-1.mp3');
+    const options = howler.constructor.mock.calls[0][0] as { onloaderror: () => void };
+    options.onloaderror();
+
+    expect(howler.unload).toHaveBeenCalledOnce();
+    expect(speak).toHaveBeenCalledOnce();
+    expect(speak.mock.calls[0][0].text).toBe('Frase de respaldo');
+  });
 
   it('lee únicamente el texto con una voz española estable', () => {
     const service = new SpeechService();

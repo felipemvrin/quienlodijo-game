@@ -13,6 +13,7 @@ import { PlayerCardComponent } from '../../shared/ui/player-card/player-card.com
 import { GameStateService } from '../../game/services/game-state.service';
 import { AnimationService } from '../../game/services/animation.service';
 import { AudioService } from '../../game/services/audio.service';
+import type { Player } from '../../game/models/player.model';
 
 /** Marcador final y anuncio del ganador. */
 @Component({
@@ -143,7 +144,7 @@ export class ResultsPage {
     });
   }
 
-  protected playerOf(playerId: string) {
+  protected playerOf(playerId: string): Player | undefined {
     return this.game.players().find((player) => player.id === playerId);
   }
 

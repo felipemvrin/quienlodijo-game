@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { AnswerRevealComponent } from './answer-reveal.component';
 import type { Character } from '../../../game/models/character.model';
+import type { Question } from '../../../game/models/question.model';
 
 const marx: Character = {
   id: 'marx',
@@ -11,10 +12,21 @@ const marx: Character = {
   colorToken: 'marx',
 };
 
+const question: Question = {
+  id: 'q-marx-solido-aire',
+  quote: 'Todo lo sólido se desvanece en el aire, todo lo sagrado es profanado.',
+  correctAnswer: 'marx',
+  explanation:
+    'Descripción del vértigo que la burguesía imprime a la vida moderna. Su tono apocalíptico despista: parece la denuncia de un predicador.',
+  source: 'Manifiesto del Partido Comunista',
+  year: 1848,
+  difficulty: 'medium',
+};
+
 const meta: Meta<AnswerRevealComponent> = {
   title: 'Juego/AnswerReveal',
   component: AnswerRevealComponent,
-  args: { correct: true, character: marx, points: 140, timedOut: false },
+  args: { correct: true, character: marx, question, points: 140, timedOut: false },
   parameters: { layout: 'padded' },
 };
 
