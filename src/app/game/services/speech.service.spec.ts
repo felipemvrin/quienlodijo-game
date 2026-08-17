@@ -65,6 +65,18 @@ describe('SpeechService', () => {
     expect(speak).not.toHaveBeenCalled();
   });
 
+  it('usa Web Speech si el audio asociado no puede cargarse', () => {
+    const service = new SpeechService();
+
+    service.speak('Frase de respaldo', 'assets/audio/quotes/q-1.mp3');
+    const options = howler.constructor.mock.calls[0][0] as { onloaderror: () => void };
+    options.onloaderror();
+
+    expect(howler.unload).toHaveBeenCalledOnce();
+    expect(speak).toHaveBeenCalledOnce();
+    expect(speak.mock.calls[0][0].text).toBe('Frase de respaldo');
+  });
+
   it('lee únicamente el texto con una voz española estable', () => {
     const service = new SpeechService();
 

@@ -14,16 +14,18 @@ lógica.
 ## Estado del proyecto
 
 🚧 **Fase 2 — Partida jugable.** Se puede crear una partida de 2 a 6 jugadores, responder frases con
-cuenta atrás y ver el marcador final. Faltan los assets definitivos y el modo online.
+cuenta atrás y ver el marcador final. Faltan las ilustraciones, la música definitiva y el modo
+online.
 
-| Área                           | Estado                |
-| ------------------------------ | --------------------- |
-| Arquitectura y motor de juego  | ✅ Listo y testeado   |
-| Design system y tokens         | ✅ Base definida      |
-| Pantalla de bienvenida         | ✅ Funcional          |
-| Creación de partida y tablero  | ✅ Funcional          |
-| Marcador y pantalla final      | ✅ Funcional          |
-| Ilustraciones y audio finales  | ⏳ Provisionales      |
+| Área                           | Estado              |
+| ------------------------------ | ------------------- |
+| Arquitectura y motor de juego  | ✅ Listo y testeado |
+| Design system y tokens         | ✅ Base definida    |
+| Pantalla de bienvenida         | ✅ Funcional        |
+| Creación de partida y tablero  | ✅ Funcional        |
+| Marcador y pantalla final      | ✅ Funcional        |
+| Narración de las frases        | ✅ Funcional        |
+| Ilustraciones, música y SFX    | ⏳ Provisionales    |
 | Multijugador online (Supabase) | 🗓️ Planificado      |
 
 ---
@@ -52,7 +54,7 @@ Las frases incluyen **fuente verificable** (versículo u obra). No se inventan c
 | Estilos             | Tailwind CSS 4 + CSS Variables (design tokens) |
 | Componentes         | Componentes propios + Angular CDK              |
 | Animación           | GSAP (interfaz) + lottie-web (ilustración)     |
-| Audio               | Howler.js                                      |
+| Audio               | Howler.js + Web Speech API                     |
 | Documentación de UI | Storybook 9                                    |
 | Tests unitarios     | Vitest                                         |
 | Tests E2E           | Playwright                                     |
@@ -124,7 +126,7 @@ src/
 │       └── results/           # marcador final
 │
 ├── assets/
-│   ├── audio/                 # placeholders de música y efectos
+│   ├── audio/                 # narraciones, música y efectos
 │   ├── animations/            # Lottie
 │   ├── characters/            # retratos
 │   └── data/                  # characters.json, questions.json, avatars.json
@@ -148,9 +150,15 @@ src/
 
 ### Sobre el audio
 
-Los archivos de `src/assets/audio/` siguen siendo placeholders. Mientras no existan, `AudioService`
-genera los efectos con Web Audio (`synthetic-sfx.ts`), así que el juego suena sin incorporar
-material con copyright. Al añadir un archivo real, el servicio lo usa automáticamente.
+Cada una de las 16 frases tiene una narración MP3 en `src/assets/audio/quotes/`. `SpeechService` las
+reproduce con Howler.js y utiliza Web Speech API como respaldo si un archivo no está disponible o
+el navegador no puede reproducirlo. El control de silencio detiene tanto la narración como los
+efectos y la música.
+
+La música y los efectos siguen siendo provisionales. Cuando falta uno de esos archivos,
+`AudioService` genera un efecto sintético con Web Audio o continúa sin interrumpir la partida. La
+procedencia, el formato y las instrucciones de regeneración están documentados en
+`src/assets/audio/README.md`.
 
 ---
 
@@ -161,8 +169,8 @@ npm test
 npm run test:e2e
 ```
 
-Los tests unitarios cubren el motor: una respuesta correcta suma puntos, una incorrecta no, el turno
-rota correctamente y la partida admite entre 2 y 6 jugadores.
+Los tests unitarios cubren el motor y los servicios de narración: puntuación, rotación de turnos,
+límites de jugadores, reproducción de MP3 y respaldo mediante Web Speech API.
 
 ---
 
@@ -185,5 +193,6 @@ rota correctamente y la partida admite entre 2 y 6 jugadores.
 
 MIT.
 
-Las citas incluidas son de dominio público y se acompañan de su fuente. No se incluyen recursos de
-audio ni ilustraciones con copyright.
+Las citas incluidas se acompañan de su fuente. La licencia MIT del código no sustituye las
+condiciones aplicables a servicios o recursos de terceros; consulta la documentación de cada tipo
+de asset antes de redistribuirlo o utilizarlo comercialmente.

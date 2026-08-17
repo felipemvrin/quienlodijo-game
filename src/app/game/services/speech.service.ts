@@ -3,7 +3,7 @@ import { Howl } from 'howler';
 
 const SPANISH_LOCALE = 'es-ES';
 
-/** Narración de frases mediante la Web Speech API del navegador. */
+/** Reproduce narraciones grabadas y usa Web Speech API como respaldo. */
 @Injectable({ providedIn: 'root' })
 export class SpeechService {
   private selectedVoice: SpeechSynthesisVoice | null = null;
@@ -84,7 +84,9 @@ export class SpeechService {
       return this.selectedVoice;
     }
 
-    const voices = synthesis.getVoices().filter((voice) => voice.lang.toLowerCase().startsWith('es'));
+    const voices = synthesis
+      .getVoices()
+      .filter((voice) => voice.lang.toLowerCase().startsWith('es'));
     this.selectedVoice =
       voices.find((voice) => voice.lang.toLowerCase() === SPANISH_LOCALE.toLowerCase()) ??
       voices[0] ??
