@@ -21,6 +21,7 @@ import { TimerComponent } from '../../shared/ui/timer/timer.component';
 import { GameStateService } from '../../game/services/game-state.service';
 import { AnimationService } from '../../game/services/animation.service';
 import { AudioService } from '../../game/services/audio.service';
+import { SpeechService } from '../../game/services/speech.service';
 import { GameStatus } from '../../game/models/game.model';
 import type { AnswerState } from '../../shared/ui/answer-button/answer-button.component';
 import type { CharacterId } from '../../game/models/character.model';
@@ -193,6 +194,7 @@ export class BoardPage implements OnInit {
   protected readonly game = inject(GameStateService);
   protected readonly audio = inject(AudioService);
   private readonly animations = inject(AnimationService);
+  private readonly speech = inject(SpeechService);
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
 
@@ -232,10 +234,15 @@ export class BoardPage implements OnInit {
       }
       this.lastQuestionId = question.id;
       this.restartCountdown();
+      this.speech.speak(question.quote);
       const element = this.card()?.nativeElement;
       if (element) {
         this.animations.enter(element);
       }
+    });
+
+    effect(() => {
+      this.speech.setMuted(this.audio.muted());
     });
 
     effect(() => {
@@ -258,7 +265,10 @@ export class BoardPage implements OnInit {
     this.audio.preload(['sfx.correct', 'sfx.incorrect', 'sfx.laugh', 'sfx.countdown']);
 
     const interval = setInterval(() => this.tick(), TICK_MS);
-    this.destroyRef.onDestroy(() => clearInterval(interval));
+    this.destroyRef.onDestroy(() => {
+      clearInterval(interval);
+      this.speech.stop();
+    });
   }
 
   protected answerState(characterId: CharacterId): AnswerState {
@@ -276,6 +286,7 @@ export class BoardPage implements OnInit {
     if (this.revealed()) {
       return;
     }
+    this.speech.stop();
     const result = this.game.answer(choice, TURN_TIME_MS - this.remainingMs());
     this.audio.play(result.correct ? 'sfx.correct' : 'sfx.incorrect');
     if (!result.correct) {
@@ -306,6 +317,7 @@ export class BoardPage implements OnInit {
       this.audio.play('sfx.countdown');
     }
     if (remaining === 0) {
+      this.speech.stop();
       this.game.timeout(TURN_TIME_MS);
       this.audio.play('sfx.incorrect');
     }
